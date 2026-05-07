@@ -8,7 +8,7 @@ import functools
 # Bypass SSL certificate verification for torch model downloads (macOS issue)
 ssl._create_default_https_context = ssl._create_unverified_context
 
-# Monkey-patch torch.load for Torch 2.6+ compatibility with legacy fastai pickles
+# Monkey-patch torch.load for Torch 2.6+ compatibility with legacy fastai pickless
 import torch.serialization
 original_load = torch.load
 def patched_load(*args, **kwargs):
@@ -37,7 +37,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Absolute paths for reliability
-BASE_DIR = Path("/Users/aakashsrivastava/Desktop/ai-image-colorizer")
+BASE_DIR = Path("/Users/aakashsrivastava/Desktop/desktop/ai-image-colorizer")
 DEOLDIFY_DIR = BASE_DIR / "DeOldify"
 UPLOAD_FOLDER = BASE_DIR / "uploads"
 OUTPUT_FOLDER = BASE_DIR / "outputs"
