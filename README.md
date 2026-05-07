@@ -6,20 +6,6 @@ The frontend is built using **React.js** with both **Dark & Light Theme support*
 
 ---
 
-# 🚀 Features
-
-- Upload black-and-white images
-- AI-powered realistic colorization
-- Modern React frontend
-- Dark & Light theme toggle
-- Drag & Drop image upload
-- Animated loading spinner while generating
-- Download generated image
-- Responsive modern UI
-- GAN-based deep learning colorization
-
----
-
 # 🧠 What is DeOldify?
 
 [DeOldify](https://github.com/jantic/DeOldify?utm_source=chatgpt.com) is an open-source deep learning project used for:
