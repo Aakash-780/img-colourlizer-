@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Colorizer | Transform History to Vibrant Life</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="AI-powered black and white photo colorizer using DeOldify. Bring your old memories back to life in seconds.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>AI Image Colorizer</h1>
+            <p class="subtitle">Experience the magic of deep learning as we breathe color into your black-and-white
+                memories in stunning detail.</p>
+        </header>
+
+        <main class="main-card">
+            <section class="upload-section">
+                <label for="imageInput" class="drop-zone" id="dropZone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Click or drag your black & white photo here</p>
+                    <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.5rem;">JPG, PNG or WEBP
+                        (Standard definition)</p>
+                    <input type="file" id="imageInput" accept="image/*">
+                </label>
+
+                <div id="loader" class="loader">
+                    <div class="spinner"></div>
+                    <span>Breating life into your image... This may take a moment.</span>
+                </div>
+
+                <button onclick="uploadImage()" id="colorizeBtn" class="btn-primary" disabled>
+                    <i class="fa-solid fa-wand-magic-sparkles" style="margin-right: 0.5rem; color: white;"></i>
+                    Colorize Now
+                </button>
+            </section>
+
+            <section id="resultsArea" class="results-area">
+                <div class="img-container">
+                    <span class="img-label">Original Memory</span>
+                    <img id="originalPreview" class="preview-img" alt="B&W Original">
+                </div>
+                <div class="img-container">
+                    <span class="img-label">Colorized Result</span>
+                    <img id="resultImage" class="preview-img" alt="AI Colorized Result">
+                    <button id="downloadBtn" class="btn-primary"
+                        style="margin-top: 1rem; padding: 0.75rem; font-size: 1rem; display: none;">
+                        <i class="fa-solid fa-download" style="margin-right: 0.5rem; color: white;"></i>
+                        Download
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer style="margin-top: 4rem; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+            <p>&copy; 2026 AI Colorizer &bull; Powered by Deep learning & DeOldify</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

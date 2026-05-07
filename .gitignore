@@ -1,0 +1,19 @@
+# Virtual Environment
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# User data & Output images
+uploads/
+outputs/
+result_images/
+
+# AI Model Weights (Too large for GitHub)
+DeOldify/models/
+
+# macOS
+.DS_Store
