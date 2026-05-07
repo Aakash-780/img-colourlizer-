@@ -81,9 +81,8 @@ img-colourlizer/
 │
 ├── backend/
 │   ├── app.py
-│   └── uploads/
-│
-├── DeOldify/
+│   ├── requirements.txt
+│   └── DeOldify/
 │
 └── README.md
 ```
@@ -101,6 +100,7 @@ img-colourlizer/
 ## Backend
 - Python
 - Flask
+- Flask-CORS
 
 ## AI / Deep Learning
 - DeOldify
@@ -193,18 +193,21 @@ source venv/bin/activate
 
 ```bash
 pip install flask
-pip install torch torchvision fastai
-```
-
-Install DeOldify requirements:
-
-```bash
-pip install -r ../DeOldify/requirements.txt
+pip install flask-cors
+pip install torch torchvision fastai pillow opencv-python
 ```
 
 ---
 
-## 9️⃣ Run Backend Server
+## 9️⃣ Install Backend Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔟 Run Backend Server
 
 ```bash
 python app.py
