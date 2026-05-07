@@ -1,21 +1,22 @@
 # 🎨 AI Image Colorizer using DeOldify
 
-This project is a small AI-based image colorizer built using the **DeOldify** library and the concept of **GANs (Generative Adversarial Networks)**. The application converts old black-and-white images into realistic colored images.
+This project is a modern AI-powered image colorizer built using the **DeOldify** library and the concept of **GANs (Generative Adversarial Networks)**. The application transforms old black-and-white photos into vibrant realistic colored images using Deep Learning.
 
-It includes:
-- A simple frontend using HTML, CSS, and JavaScript
-- A Python Flask backend
-- Integration with the DeOldify deep learning model
+The frontend is built using **React.js** with both **Dark & Light Theme support**, while the backend uses **Flask** and the **DeOldify AI model**.
 
 ---
 
 # 🚀 Features
 
 - Upload black-and-white images
-- Automatically generate colorized images
-- Simple and beginner-friendly project structure
-- Uses Deep Learning and GAN concepts
-- Fast and realistic colorization results
+- AI-powered realistic colorization
+- Modern React frontend
+- Dark & Light theme toggle
+- Drag & Drop image upload
+- Animated loading spinner while generating
+- Download generated image
+- Responsive modern UI
+- GAN-based deep learning colorization
 
 ---
 
@@ -32,7 +33,7 @@ It is built using:
 - FastAI
 - GAN (Generative Adversarial Network)
 
-DeOldify became popular because it can generate very realistic colors for old grayscale images.
+DeOldify became popular because it generates highly realistic and vibrant colors for grayscale images.
 
 ---
 
@@ -40,15 +41,17 @@ DeOldify became popular because it can generate very realistic colors for old gr
 
 This project works on the concept of a **GAN (Generative Adversarial Network)**.
 
-A GAN mainly contains two parts:
+A GAN mainly contains two neural networks:
+
+---
 
 ## 1️⃣ Generator
 
-The Generator tries to create realistic colored images from black-and-white images.
+The Generator creates realistic colored images from black-and-white images.
 
 ### Work:
 - Takes grayscale image as input
-- Predicts realistic colors
+- Predicts suitable colors
 - Generates a colorized image
 
 ---
@@ -58,7 +61,7 @@ The Generator tries to create realistic colored images from black-and-white imag
 The Discriminator checks whether the generated image looks real or fake.
 
 ### Work:
-- Compares generated image with real images
+- Compares generated image with real colored images
 - Gives feedback to Generator
 - Helps improve image quality
 
@@ -66,13 +69,13 @@ The Discriminator checks whether the generated image looks real or fake.
 
 ## 🔁 Working of GAN
 
-1. Input black-and-white image
+1. User uploads a black-and-white image
 2. Generator adds colors
-3. Discriminator checks image quality
+3. Discriminator checks realism
 4. Generator improves using feedback
 5. Final realistic colorized image is produced
 
-This continuous competition between Generator and Discriminator helps the model learn better colorization.
+This continuous competition between Generator and Discriminator helps the AI learn realistic colorization.
 
 ---
 
@@ -82,12 +85,17 @@ This continuous competition between Generator and Discriminator helps the model 
 img-colourlizer/
 │
 ├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   │
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── backend/
-│   └── app.py
+│   ├── app.py
+│   └── uploads/
 │
 ├── DeOldify/
 │
@@ -98,14 +106,21 @@ img-colourlizer/
 
 # ⚙️ Technologies Used
 
+## Frontend
+- React.js
+- Tailwind CSS
+- Lucide React Icons
+- Vite
+
+## Backend
 - Python
 - Flask
-- HTML
-- CSS
-- JavaScript
+
+## AI / Deep Learning
+- DeOldify
 - PyTorch
 - FastAI
-- DeOldify
+- GAN
 
 ---
 
@@ -127,7 +142,50 @@ cd img-colourlizer
 
 ---
 
-## 3️⃣ Create Virtual Environment
+# ⚛️ Frontend Setup (React)
+
+## 3️⃣ Install Frontend Dependencies
+
+```bash
+cd frontend
+npm install
+```
+
+---
+
+## 4️⃣ Install Required React Packages
+
+```bash
+npm install lucide-react
+```
+
+---
+
+## 5️⃣ Run React Frontend
+
+```bash
+npm run dev
+```
+
+Frontend will start on:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 🐍 Backend Setup (Flask + DeOldify)
+
+## 6️⃣ Open Backend Folder
+
+```bash
+cd backend
+```
+
+---
+
+## 7️⃣ Create Virtual Environment
 
 ### Windows
 
@@ -145,81 +203,43 @@ source venv/bin/activate
 
 ---
 
-## 4️⃣ Install Dependencies
+## 8️⃣ Install Python Dependencies
 
 ```bash
-pip install -r DeOldify/requirements.txt
 pip install flask
+pip install torch torchvision fastai
+```
+
+Install DeOldify requirements:
+
+```bash
+pip install -r ../DeOldify/requirements.txt
 ```
 
 ---
 
-# ▶️ How to Run the Project
-
-## Step 1: Start Backend Server
+## 9️⃣ Run Backend Server
 
 ```bash
-cd backend
 python app.py
 ```
 
 Backend will start on:
 
 ```bash
-http://127.0.0.1:5000/
+http://127.0.0.1:5001
 ```
 
 ---
 
-## Step 2: Open Frontend
-
-Open:
-
-```bash
-frontend/index.html
-```
-
-in your browser.
-
----
-
-# 📸 How It Works
+# ▶️ How the Application Works
 
 1. User uploads an old black-and-white image
-2. Image is sent to Flask backend
+2. React frontend sends image to Flask backend
 3. DeOldify model processes the image
 4. GAN generates realistic colors
-5. Final colorized image is displayed to the user
-
----
-
-# 🎯 Future Improvements
-
-- Video colorization support
-- Drag and drop image upload
-- Better UI design
-- Cloud deployment
-- Real-time preview
-
----
-
-# 📚 Learning Outcome
-
-Through this project, you can learn:
-
-- Basics of GANs
-- Image processing using AI
-- Flask backend integration
-- Frontend and backend communication
-- Deep learning model integration
-
----
-
-# 🙌 Credits
-
-- DeOldify Open Source Community
-- FastAI
-- PyTorch
+5. Final colorized image is returned
+6. User can preview and download the image
 
 ---
 
