@@ -1,3 +1,13 @@
+import collections
+import collections.abc
+collections.Sized = collections.abc.Sized
+collections.Iterable = collections.abc.Iterable
+collections.Mapping = collections.abc.Mapping
+collections.MutableMapping = collections.abc.MutableMapping
+collections.Sequence = collections.abc.Sequence
+collections.MutableSequence = collections.abc.MutableSequence
+collections.Callable = collections.abc.Callable
+
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import os
@@ -26,11 +36,25 @@ def patched_load(*args, **kwargs):
 torch.load = patched_load
 torch.serialization.load = patched_load
 
-# =========================
-# Base Directories
-# =========================
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Ensure PYTHONPATH includes the DeOldify folder
+import sys
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEOLDIFY_DIR = os.path.join(BASE_DIR, "backend", "DeOldify")
+if DEOLDIFY_DIR not in sys.path:
+    sys.path.append(DEOLDIFY_DIR)
 
+# DeOldify imports
+from deoldify import device
+from deoldify.device_id import DeviceId
+from deoldify.visualize import *
+
+from pathlib import Path
+
+app = Flask(__name__)
+CORS(app)
+
+# Absolute paths for reliability
+BASE_DIR = Path(__file__).resolve().parent.parent
 DEOLDIFY_DIR = BASE_DIR / "backend" / "DeOldify"
 UPLOAD_FOLDER = BASE_DIR / "uploads"
 OUTPUT_FOLDER = BASE_DIR / "outputs"
