@@ -25,11 +25,25 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # Torch Compatibility Patch
 # =========================
 import torch.serialization
+import inspect
 
 original_load = torch.load
 
+# Determine if 'weights_only' is supported by the installed torch version
+try:
+    has_weights_only = 'weights_only' in inspect.signature(original_load).parameters
+except Exception:
+    # Safe fallback checking PyTorch version
+    import torch
+    parts = torch.__version__.split('.')
+    has_weights_only = False
+    if parts and parts[0].isdigit():
+        major = int(parts[0])
+        minor = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
+        has_weights_only = (major > 1) or (major == 1 and minor >= 13)
+
 def patched_load(*args, **kwargs):
-    if 'weights_only' not in kwargs:
+    if has_weights_only and 'weights_only' not in kwargs:
         kwargs['weights_only'] = False
     return original_load(*args, **kwargs)
 
