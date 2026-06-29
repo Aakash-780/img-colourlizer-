@@ -1,3 +1,14 @@
+---
+title: ChromaRestore AI
+emoji: 🎨
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+---
+
 # 🎨 AI Image Colorizer using DeOldify
 
 This project is a modern AI-powered image colorizer built using the **DeOldify** library and the concept of **GANs (Generative Adversarial Networks)**. The application transforms old black-and-white photos into vibrant realistic colored images using Deep Learning.
