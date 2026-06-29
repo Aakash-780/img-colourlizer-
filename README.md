@@ -7,7 +7,8 @@ The frontend is built using **React.js** with both **Dark & Light Theme support*
 
 ---
 
-# 🌐 Live Application: [Open Link](https://img-colourlizer.vercel.app)
+# 🌐 Live Application: 
+[Open Link](https://img-colourlizer.vercel.app)
 
 # 🧠 What is DeOldify?
 
