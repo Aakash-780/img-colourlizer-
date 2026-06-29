@@ -107,6 +107,49 @@ import matplotlib
 matplotlib.use('agg')
 
 # =========================
+# Download Model Weights if Missing
+# =========================
+def download_model_if_missing():
+    model_path = DEOLDIFY_DIR / "models" / "ColorizeArtistic_gen.pth"
+    if not model_path.exists():
+        print(f"Model weights not found at {model_path}. Downloading...")
+        os.makedirs(model_path.parent, exist_ok=True)
+        import urllib.request
+        import ssl
+        
+        hf_url = "https://huggingface.co/jantic/DeOldify/resolve/main/ColorizeArtistic_gen.pth"
+        deepai_url = "https://data.deepai.org/deoldify/ColorizeArtistic_gen.pth"
+        
+        ctx = ssl._create_unverified_context()
+        
+        try:
+            print(f"Downloading from Hugging Face Hub: {hf_url} ...")
+            req = urllib.request.Request(hf_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, context=ctx) as response, open(model_path, 'wb') as out_file:
+                while True:
+                    chunk = response.read(1024 * 1024)
+                    if not chunk:
+                        break
+                    out_file.write(chunk)
+            print("Successfully downloaded weights from Hugging Face Hub!")
+        except Exception as e:
+            print(f"Failed to download from Hugging Face: {e}. Trying DeepAI fallback...")
+            try:
+                req = urllib.request.Request(deepai_url, headers={'User-Agent': 'Mozilla/5.0'})
+                with urllib.request.urlopen(req, context=ctx) as response, open(model_path, 'wb') as out_file:
+                    while True:
+                        chunk = response.read(1024 * 1024)
+                        if not chunk:
+                            break
+                        out_file.write(chunk)
+                print("Successfully downloaded weights from DeepAI fallback!")
+            except Exception as e2:
+                print(f"Critical Error: Failed to download model weights: {e2}")
+                raise e2
+
+download_model_if_missing()
+
+# =========================
 # Initialize Colorizer
 # =========================
 colorizer = get_image_colorizer(
