@@ -15,7 +15,11 @@ An AI-powered web application built with <b>React</b>, <b>Flask</b>, <b>PyTorch<
 
 <p>
 <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white" />
+
+        
 <img src="https://img.shields.io/badge/Flask-000000?logo=flask&logoColor=white" />
+
+
 <img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white" />
 <img src="https://img.shields.io/badge/FastAI-0D96F6" />
 <img src="https://img.shields.io/badge/GAN-Based-success" />
