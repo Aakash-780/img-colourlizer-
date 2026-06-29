@@ -1,13 +1,3 @@
----
-title: ChromaRestore AI
-emoji: 🎨
-colorFrom: indigo
-colorTo: purple
-sdk: docker
-app_port: 7860
-pinned: false
-license: mit
----
 
 # 🎨 AI Image Colorizer using DeOldify
 
@@ -16,6 +6,8 @@ This project is a modern AI-powered image colorizer built using the **DeOldify**
 The frontend is built using **React.js** with both **Dark & Light Theme support**, while the backend uses **Flask** and the **DeOldify AI model**.
 
 ---
+
+#🌐 Live Application: Open Link[https://img-colourlizer.vercel.app]
 
 # 🧠 What is DeOldify?
 
