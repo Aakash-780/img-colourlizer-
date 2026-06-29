@@ -108,7 +108,8 @@ export default function App() {
     formData.append("image", image.file);
 
     try {
-      const response = await fetch("http://127.0.0.1:5001/colorize", {
+      const apiBaseUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001";
+      const response = await fetch(`${apiBaseUrl}/colorize`, {
         method: "POST",
         body: formData,
       });
