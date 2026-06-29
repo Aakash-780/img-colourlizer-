@@ -1,11 +1,12 @@
 FROM python:3.10-slim
 
-# Install system dependencies needed for OpenCV, FFmpeg, and Git
+# Install system dependencies needed for OpenCV, FFmpeg, Git, and patchelf
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     libsm6 \
     libxext6 \
     git \
+    patchelf \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -13,6 +14,9 @@ WORKDIR /app
 # Copy and install Python requirements
 COPY backend/DeOldify/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Fix PyTorch execstack issue for container compatibility
+RUN patchelf --clear-execstack /usr/local/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so
 
 # Copy application source files
 COPY . .
