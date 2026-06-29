@@ -15,3 +15,5 @@ pandas
 tqdm
 requests
 ffmpeg-python
+yt-dlp
+ipython
